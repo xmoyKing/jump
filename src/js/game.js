@@ -2,7 +2,7 @@ var Game = function () {
   // 基本参数
   this.config = {
     isMobile: false,
-    helper: true, // 默认关闭helper
+    helper: false, // 默认关闭helper
     background: 0x282828, // 背景颜色
     ground: -1, // 地面y坐标
     fallingSpeed: 0.2, // 游戏失败掉落速度
