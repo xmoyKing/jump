@@ -22,9 +22,20 @@ function failed(){
 // 游戏成功，更新分数
 function success (score) {
 	var scoreCurrent = document.querySelector('.score-current')
-	scoreCurrent.innerText = score
+	scoreCurrent.innerText = score;
+	// 记录最高分
+	var record = document.querySelector('.record');
+	var item = 'JUMP_KING_RECORD_SCORE';
+	var itemScore = parseInt(localStorage.getItem(item) || 0);
+	if( itemScore < score){
+		localStorage.setItem(item, score);
+		record.innerText = score;
+	}else{
+		record.innerText = itemScore;
+	}
 }
 
+// 背景音乐/音效
 function audioBgm() {
 	var bgm = new Audio('./src/bgm.mp3');
 	bgm.volume = .05
@@ -40,3 +51,8 @@ ActMusic.loop = false;
 var FallMusic = new Audio('./src/fall.mp3');
 FallMusic.volume = .05;
 FallMusic.loop = false;
+
+// 禁止移动端长按弹出菜单
+document.addEventListener('contextmenu', function (e) {
+	e.preventDefault();
+})
